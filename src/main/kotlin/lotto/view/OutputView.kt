@@ -6,10 +6,10 @@ object OutputView {
         println("${count}개를 구매했습니다.")
     }
 
-    fun printLottosNumber(lottos: List<String>) {
+    fun printLottosNumber(lottos: List<List<Int>>) {
         val lottoNumbers = StringBuilder()
         lottos.forEach { lotto ->
-            lottoNumbers.append("[$lotto]\n")
+            lottoNumbers.append("$lotto\n")
         }
         println(lottoNumbers.toString())
     }

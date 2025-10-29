@@ -3,7 +3,7 @@ package lotto.model
 import camp.nextstep.edu.missionutils.Randoms
 
 class MyLotto {
-    private val myLottos = mutableListOf<String>()
+    private val myLottos = mutableListOf<List<Int>>()
 
     companion object {
         private const val LOTTO_PRICE = 1000
@@ -18,11 +18,11 @@ class MyLotto {
         val lottoCount = inputAmount / LOTTO_PRICE
         repeat(lottoCount) {
             val lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT)
-            myLottos.add(lottoNumbers.joinToString(", ").trim())
+            myLottos.add(lottoNumbers)
         }
     }
 
-    fun getLottos(): List<String> {
+    fun getLottos(): List<List<Int>> {
         return myLottos
     }
 }
