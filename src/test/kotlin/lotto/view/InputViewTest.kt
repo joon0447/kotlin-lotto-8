@@ -12,7 +12,7 @@ class InputViewTest {
         val inputStream = ByteArrayInputStream(fakeInput.toByteArray())
         System.setIn(inputStream)
 
-        val result = InputView.inputPrice()
+        val result = InputView.inputPurchaseAmount()
 
         assertEquals("1000", result)
     }

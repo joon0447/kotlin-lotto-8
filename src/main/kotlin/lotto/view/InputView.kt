@@ -5,8 +5,8 @@ import lotto.message.InputMessage
 
 object InputView {
 
-    fun inputPrice(): String {
-        println(InputMessage.PRICE.text)
+    fun inputPurchaseAmount(): String {
+        println(InputMessage.PURCHASE_AMOUNT.text)
         return Console.readLine()
     }
 }
