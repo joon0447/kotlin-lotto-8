@@ -18,7 +18,7 @@ class MyLotto {
         val lottoCount = inputAmount / LOTTO_PRICE
         repeat(lottoCount) {
             val lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT)
-            myLottos.add(lottoNumbers.joinToString(",").trim())
+            myLottos.add(lottoNumbers.joinToString(", ").trim())
         }
     }
 
