@@ -3,6 +3,7 @@ package lotto.controller
 import lotto.model.InputValidator
 import lotto.model.MyLotto
 import lotto.view.InputView
+import lotto.view.OutputView
 
 class LottoController {
 
@@ -12,5 +13,6 @@ class LottoController {
 
         val myLotto = MyLotto()
         myLotto.createLottos(purchaseAmount)
+        OutputView.printLottoCount(myLotto.getLottos().size)
     }
 }
