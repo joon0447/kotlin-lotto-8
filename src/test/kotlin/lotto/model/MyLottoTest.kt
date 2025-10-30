@@ -20,9 +20,8 @@ class MyLottoTest {
         val lottos = myLotto.getLottos()
 
         for (lotto in lottos) {
-            val numbers = lotto.split(",").map{it.toInt()}
-            assertEquals(6, numbers.size)
-            assertTrue(numbers.all { it in 1..45 })
+            assertEquals(6, lotto.size)
+            assertTrue(lotto.all { it in 1..45 })
         }
     }
 
