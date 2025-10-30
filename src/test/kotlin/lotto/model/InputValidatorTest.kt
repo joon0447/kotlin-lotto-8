@@ -20,7 +20,7 @@ class InputValidatorTest {
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("1500")
         }
-        assertEquals(ErrorMessage.INVALID_AMOUNT_UNIT.text, exception.message)
+        assertEquals(ErrorMessage.INVALID_AMOUNT_UNIT.formattedText(), exception.message)
     }
 
     @Test
@@ -28,7 +28,7 @@ class InputValidatorTest {
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("500")
         }
-        assertEquals(ErrorMessage.INVALID_AMOUNT_RANGE.text, exception.message)
+        assertEquals(ErrorMessage.INVALID_AMOUNT_RANGE.formattedText(), exception.message)
     }
 
     @Test
@@ -36,18 +36,18 @@ class InputValidatorTest {
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("1205d")
         }
-        assertEquals(ErrorMessage.INVALID_AMOUND_FORMAT.text, exception.message)
+        assertEquals(ErrorMessage.INVALID_AMOUND_FORMAT.formattedText(), exception.message)
     }
 
     @Test
     fun `당첨 번호 정상 입력 시`() {
-        val input = mutableListOf("1", "2", "3", "4", "5", "6")
+        val input = mutableListOf(1, 2, 3, 4, 5, 6)
         assertDoesNotThrow { InputValidator.validateInputWinningNumber(input) }
     }
 
     @Test
     fun `입력된 당첨 번호가 6개가 아닐 때`() {
-        val input = mutableListOf("1", "2", "3", "4", "5")
+        val input = mutableListOf(1, 2, 3, 4, 5)
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputWinningNumber(input)
         }
@@ -56,7 +56,7 @@ class InputValidatorTest {
 
     @Test
     fun `입력된 당첨 번호 중 범위를 벗어난 값이 있을 때`() {
-        val input = mutableListOf("1", "2", "3", "104", "5", "6")
+        val input = mutableListOf(1, 2, 106, 4, 5, -4)
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputWinningNumber(input)
         }
