@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class InputValidatorTest {
 
@@ -59,5 +61,34 @@ class InputValidatorTest {
             InputValidator.validateInputWinningNumber(input)
         }
         assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText(), exception.message)
+    }
+
+    @Test
+    fun `보너스 번호 정상 입력했을 때`() {
+        assertDoesNotThrow { InputValidator.validateInputBonusNumber("3") }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["", " ", "ds4"])
+    fun `보너스 번호가 숫자가 아닐 때`(input: String) {
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            InputValidator.validateInputBonusNumber(input)
+        }
+        assertEquals(
+            ErrorMessage.INVALID_BONUS_NUMBER_FORMAT.formattedText(),
+            exception.message
+        )
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["-4", "100"])
+    fun `보너스 번호가 정상 범위가 아닐 때`(input: String) {
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            InputValidator.validateInputBonusNumber(input)
+        }
+        assertEquals(
+            ErrorMessage.INVALID_BONUS_NUMBER_RANGE.formattedText(),
+            exception.message
+        )
     }
 }
