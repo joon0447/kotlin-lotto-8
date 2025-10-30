@@ -20,4 +20,10 @@ object InputValidator {
             require(number in 1..45) { ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText() }
         }
     }
+
+    fun validateInputBonusNumber(number: String) {
+        val bonusNumber = number.toIntOrNull()
+        require(bonusNumber != null) { ErrorMessage.INVALID_BONUS_NUMBER_FORMAT.formattedText() }
+        require(bonusNumber in 1..45) { ErrorMessage.INVALID_BONUS_NUMBER_RANGE.formattedText() }
+    }
 }

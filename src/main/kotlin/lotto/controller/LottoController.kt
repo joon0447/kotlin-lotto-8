@@ -22,5 +22,6 @@ class LottoController {
         InputValidator.validateInputWinningNumber(parseWinningNumbers)
 
         val bonusNumber = InputView.inputBonusNumber()
+        InputValidator.validateInputBonusNumber(bonusNumber)
     }
 }
