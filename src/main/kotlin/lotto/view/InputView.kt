@@ -5,13 +5,11 @@ import lotto.message.InputMessage
 
 object InputView {
 
-    fun inputPurchaseAmount(): String {
-        println(InputMessage.PURCHASE_AMOUNT.text)
+    private fun inputValue(message: InputMessage): String {
+        println(message.text)
         return Console.readLine()
     }
 
-    fun inputWinningNumbers(): String {
-        println(InputMessage.WINNING_NUMBERS.text)
-        return Console.readLine()
-    }
+    fun inputPurchaseAmount(): String = inputValue(InputMessage.PURCHASE_AMOUNT)
+    fun inputWinningNumbers(): String = inputValue(InputMessage.WINNING_NUMBERS)
 }
