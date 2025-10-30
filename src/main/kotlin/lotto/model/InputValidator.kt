@@ -12,6 +12,7 @@ object InputValidator {
     }
 
     fun validateInputWinningNumber(winningNumbers: List<Int?>) {
+        require(winningNumbers.size == winningNumbers.toSet().size) { ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE.formattedText() }
         require(winningNumbers.size == 6) { ErrorMessage.INVALID_WINNING_NUMBERS_COUNT.formattedText() }
         winningNumbers.forEach { number ->
             require(number != null) { ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText() }
