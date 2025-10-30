@@ -12,4 +12,5 @@ object InputView {
 
     fun inputPurchaseAmount(): String = inputValue(InputMessage.PURCHASE_AMOUNT)
     fun inputWinningNumbers(): String = inputValue(InputMessage.WINNING_NUMBERS)
+    fun inputBonusNumber(): String = inputValue(InputMessage.BONUS_NUMBER)
 }
