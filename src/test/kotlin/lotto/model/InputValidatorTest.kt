@@ -26,7 +26,7 @@ class InputValidatorTest {
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("500")
         }
-        assertEquals(ErrorMessage.AMOUNT_IS_LESS_THAN_ONE_THOUSAND.text, exception.message)
+        assertEquals(ErrorMessage.INVALID_AMOUNT_RANGE.text, exception.message)
     }
 
     @Test
@@ -34,6 +34,6 @@ class InputValidatorTest {
         val exception = assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("1205d")
         }
-        assertEquals(ErrorMessage.AMOUNT_IS_NOT_NUMBER.text, exception.message)
+        assertEquals(ErrorMessage.INVALID_AMOUND_FORMAT.text, exception.message)
     }
 }
