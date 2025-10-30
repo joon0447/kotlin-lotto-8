@@ -15,5 +15,7 @@ class LottoController {
         myLotto.createLottos(purchaseAmount)
         OutputView.printLottoCount(myLotto.getLottos().size)
         OutputView.printLottosNumber(myLotto.getLottos())
+
+        val rawWinningNumbers = InputView.inputWinningNumbers()
     }
 }
