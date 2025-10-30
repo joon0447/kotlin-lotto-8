@@ -64,6 +64,15 @@ class InputValidatorTest {
     }
 
     @Test
+    fun `입력된 당첨 번호 중 중복된 값이 있을 때`() {
+        val input = mutableListOf(1,1,2,3,4,5)
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            InputValidator.validateInputWinningNumber(input)
+        }
+        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE.formattedText(), exception.message)
+    }
+
+    @Test
     fun `보너스 번호 정상 입력했을 때`() {
         assertDoesNotThrow { InputValidator.validateInputBonusNumber("3") }
     }
