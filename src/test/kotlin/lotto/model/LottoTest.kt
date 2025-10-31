@@ -34,4 +34,46 @@ class LottoTest {
         }
         assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText(), exception.message)
     }
+
+    @Test
+    fun `로또 당첨 계산`() {
+        val winningNumber = listOf(1,2,3,4,5,6)
+        val myLotto = mutableListOf<List<Int>>()
+        myLotto.add(listOf(1,2,3,4,5,6)) // 1등
+        myLotto.add(listOf(1,2,3,4,5,10)) // 2등
+        myLotto.add(listOf(1,2,3,4,5,40)) // 3등
+        myLotto.add(listOf(1,2,3,4,10,20)) // 4등
+        myLotto.add(listOf(1,2,3,10,20,30)) // 5등
+
+        val lotto = Lotto(winningNumber)
+        lotto.setBonusNumber(10)
+
+        val result = lotto.calculateWinner(myLotto)
+        assertEquals(1, result["1st"])
+        assertEquals(1, result["2nd"])
+        assertEquals(1, result["3rd"])
+        assertEquals(1, result["4th"])
+        assertEquals(1, result["5th"])
+    }
+
+    @Test
+    fun `로또 당첨 계산 2`() {
+        val winningNumber = listOf(1,2,3,4,5,6)
+        val myLotto = mutableListOf<List<Int>>()
+        myLotto.add(listOf(1,2,3,4,5,6)) // 1등
+        myLotto.add(listOf(1,2,3,4,5,6)) // 1등
+        myLotto.add(listOf(1,2,3,10,20,30)) // 5등
+        myLotto.add(listOf(1,2,3,10,20,30)) // 5등
+        myLotto.add(listOf(1,2,3,10,20,30)) // 5등
+
+        val lotto = Lotto(winningNumber)
+        lotto.setBonusNumber(10)
+
+        val result = lotto.calculateWinner(myLotto)
+        assertEquals(2, result["1st"])
+        assertEquals(0, result["2nd"])
+        assertEquals(0, result["3rd"])
+        assertEquals(0, result["4th"])
+        assertEquals(3, result["5th"])
+    }
 }
