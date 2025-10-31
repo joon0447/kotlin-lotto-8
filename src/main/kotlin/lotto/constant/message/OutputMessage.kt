@@ -1,8 +1,8 @@
 package lotto.constant.message
 
 enum class OutputMessage(val text: String) {
-    START_WINNING_STATISTICS("당첨 통계"),
-    WINNING_STATISTICS_DIVIDER("---"),
+    START_WINNING_STATISTICS("\n당첨 통계\n"),
+    WINNING_STATISTICS_DIVIDER("---\n"),
     WINNING_FIFTH("3개 일치 (5,000원)"),
     WINNING_FOURTH("4개 일치 (50,000원)"),
     WINNING_THIRD("5개 일치 (1,500,000원)"),
@@ -10,6 +10,6 @@ enum class OutputMessage(val text: String) {
     WINNING_FIRST("6개 일치 (2,000,000,000원)");
 
     fun formattedText(count: Int): String {
-        return "$text - ${count}개"
+        return "$text - ${count}개\n"
     }
 }
