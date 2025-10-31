@@ -48,7 +48,7 @@ class LottoTest {
         val lotto = Lotto(winningNumber)
         lotto.setBonusNumber(10)
 
-        val result = lotto.calculateWinner(myLotto)
+        val result = lotto.calculateWinningResults(myLotto)
         assertEquals(1, result["1st"])
         assertEquals(1, result["2nd"])
         assertEquals(1, result["3rd"])
@@ -69,7 +69,7 @@ class LottoTest {
         val lotto = Lotto(winningNumber)
         lotto.setBonusNumber(10)
 
-        val result = lotto.calculateWinner(myLotto)
+        val result = lotto.calculateWinningResults(myLotto)
         assertEquals(2, result["1st"])
         assertEquals(0, result["2nd"])
         assertEquals(0, result["3rd"])

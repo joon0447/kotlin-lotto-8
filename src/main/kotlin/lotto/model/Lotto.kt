@@ -12,33 +12,33 @@ class Lotto(private val numbers: List<Int>) {
         this.bonusNumber = bonusNumber
     }
 
-    fun calculateWinner(lottos: List<List<Int>>): Map<String, Int> {
-        val winners = mutableMapOf<String, Int>()
-        initializeWinnerCount(winners)
+    fun calculateWinningResults(lottos: List<List<Int>>): Map<String, Int> {
+        val winningResults = mutableMapOf<String, Int>()
+        initializeWinningResults(winningResults)
         lottos.forEach { lotto ->
-            updateWinnerCount(lotto, winners)
+            updateWinningResults(lotto, winningResults)
         }
-        return winners
+        return winningResults
     }
 
-    private fun initializeWinnerCount(winners: MutableMap<String, Int>) {
-        winners[Key.FIRST.value] = 0
-        winners[Key.SECOND.value] = 0
-        winners[Key.THIRD.value] = 0
-        winners[Key.FOURTH.value] = 0
-        winners[Key.FIFTH.value] = 0
+    private fun initializeWinningResults(winningResults: MutableMap<String, Int>) {
+        winningResults[Key.FIRST.value] = 0
+        winningResults[Key.SECOND.value] = 0
+        winningResults[Key.THIRD.value] = 0
+        winningResults[Key.FOURTH.value] = 0
+        winningResults[Key.FIFTH.value] = 0
     }
 
-    private fun updateWinnerCount(lotto: List<Int>, winners: MutableMap<String, Int>) {
+    private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<String, Int>) {
         val winningCount = lotto.count { numbers.contains(it) }
         when (winningCount) {
-            6 -> winners[Key.FIRST.value] = winners.getOrDefault(Key.FIRST.value, 0) + 1
-            5 if lotto.contains(bonusNumber) -> winners[Key.SECOND.value] =
-                winners.getOrDefault(Key.SECOND.value, 0) + 1
+            6 -> winningResults[Key.FIRST.value] = winningResults.getOrDefault(Key.FIRST.value, 0) + 1
+            5 if lotto.contains(bonusNumber) -> winningResults[Key.SECOND.value] =
+                winningResults.getOrDefault(Key.SECOND.value, 0) + 1
 
-            5 -> winners[Key.THIRD.value] = winners.getOrDefault(Key.THIRD.value, 0) + 1
-            4 -> winners[Key.FOURTH.value] = winners.getOrDefault(Key.FOURTH.value, 0) + 1
-            3 -> winners[Key.FIFTH.value] = winners.getOrDefault(Key.FIFTH.value, 0) + 1
+            5 -> winningResults[Key.THIRD.value] = winningResults.getOrDefault(Key.THIRD.value, 0) + 1
+            4 -> winningResults[Key.FOURTH.value] = winningResults.getOrDefault(Key.FOURTH.value, 0) + 1
+            3 -> winningResults[Key.FIFTH.value] = winningResults.getOrDefault(Key.FIFTH.value, 0) + 1
         }
     }
 }
