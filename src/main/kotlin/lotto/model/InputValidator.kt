@@ -11,11 +11,10 @@ object InputValidator {
         require(inputPurchase % 1000 == 0) { ErrorMessage.INVALID_AMOUNT_UNIT.formattedText() }
     }
 
-    fun validateInputWinningNumber(winningNumbers: List<Int?>) {
+    fun validateInputWinningNumber(winningNumbers: List<Int>) {
         require(winningNumbers.size == winningNumbers.toSet().size) { ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE.formattedText() }
         require(winningNumbers.size == 6) { ErrorMessage.INVALID_WINNING_NUMBERS_COUNT.formattedText() }
         winningNumbers.forEach { number ->
-            require(number != null) { ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText() }
             require(number in 1..45) { ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText() }
         }
     }
