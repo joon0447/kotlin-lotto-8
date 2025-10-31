@@ -8,4 +8,8 @@ class Lotto(private val numbers: List<Int>) {
     fun setBonusNumber(bonusNumber: Int) {
         this.bonusNumber = bonusNumber
     }
+
+    fun calculateWinner(lottos: List<List<Int>>): Map<String, Int> {
+
+    }
 }

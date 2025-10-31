@@ -1,4 +1,4 @@
-package lotto.message
+package lotto.constant.message
 
 
 enum class ErrorMessage(val text: String) {
