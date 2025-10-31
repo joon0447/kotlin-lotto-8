@@ -20,6 +20,7 @@ class LottoController {
 
         val rawWinningNumbers = InputView.inputWinningNumbers()
         val parseWinningNumbers = InputParser.parseWinningNumbers(rawWinningNumbers)
+        InputValidator.validateInputWinningNumber(parseWinningNumbers)
         val lotto = Lotto(parseWinningNumbers)
 
         val bonusNumber = InputView.inputBonusNumber()
