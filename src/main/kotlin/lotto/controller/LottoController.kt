@@ -2,6 +2,7 @@ package lotto.controller
 
 import lotto.model.InputParser
 import lotto.model.InputValidator
+import lotto.model.Lotto
 import lotto.model.MyLotto
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -19,7 +20,7 @@ class LottoController {
 
         val rawWinningNumbers = InputView.inputWinningNumbers()
         val parseWinningNumbers = InputParser.parseWinningNumbers(rawWinningNumbers)
-        InputValidator.validateInputWinningNumber(parseWinningNumbers)
+        val lotto = Lotto(parseWinningNumbers)
 
         val bonusNumber = InputView.inputBonusNumber()
         InputValidator.validateInputBonusNumber(bonusNumber)
