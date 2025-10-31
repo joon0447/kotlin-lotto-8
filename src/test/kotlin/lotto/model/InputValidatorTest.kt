@@ -74,14 +74,16 @@ class InputValidatorTest {
 
     @Test
     fun `보너스 번호 정상 입력했을 때`() {
-        assertDoesNotThrow { InputValidator.validateInputBonusNumber("3") }
+        val winningNumbers = listOf(1,2,3,4,5,6)
+        assertDoesNotThrow { InputValidator.validateInputBonusNumber("3", winningNumbers) }
     }
 
     @ParameterizedTest
     @ValueSource(strings = ["", " ", "ds4"])
     fun `보너스 번호가 숫자가 아닐 때`(input: String) {
+        val winningNumbers = listOf(1,2,3,4,5,6)
         val exception = assertThrows(IllegalArgumentException::class.java) {
-            InputValidator.validateInputBonusNumber(input)
+            InputValidator.validateInputBonusNumber(input, winningNumbers)
         }
         assertEquals(
             ErrorMessage.INVALID_BONUS_NUMBER_FORMAT.formattedText(),
@@ -92,11 +94,24 @@ class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = ["-4", "100"])
     fun `보너스 번호가 정상 범위가 아닐 때`(input: String) {
+        val winningNumbers = listOf(1,2,3,4,5,6)
         val exception = assertThrows(IllegalArgumentException::class.java) {
-            InputValidator.validateInputBonusNumber(input)
+            InputValidator.validateInputBonusNumber(input, winningNumbers)
         }
         assertEquals(
             ErrorMessage.INVALID_BONUS_NUMBER_RANGE.formattedText(),
+            exception.message
+        )
+    }
+
+    @Test
+    fun `당첨 번호에 있는 번호가 보너스번호로 입력될 때`() {
+        val winningNumbers = listOf(1,2,3,4,5,6)
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            InputValidator.validateInputBonusNumber("1", winningNumbers)
+        }
+        assertEquals(
+            ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText(),
             exception.message
         )
     }
