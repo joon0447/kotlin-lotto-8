@@ -1,0 +1,15 @@
+package lotto.constant.message
+
+enum class OutputMessage(val text: String) {
+    START_WINNING_STATISTICS("당첨 통계"),
+    WINNING_STATISTICS_DIVIDER("---"),
+    WINNING_FIFTH("3개 일치 (5,000원)"),
+    WINNING_FOURTH("4개 일치 (50,000원)"),
+    WINNING_THIRD("5개 일치 (1,500,000원)"),
+    WINNING_SECOND("5개 일치, 보너스 볼 일치 (30,000,000원)"),
+    WINNING_FIRST("6개 일치 (2,000,000,000원)");
+
+    fun formattedText(count: Int): String {
+        return "$text - ${count}개"
+    }
+}
