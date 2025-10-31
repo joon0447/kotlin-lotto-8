@@ -19,8 +19,9 @@ object InputValidator {
         }
     }
 
-    fun validateInputBonusNumber(number: String) {
+    fun validateInputBonusNumber(number: String, winningNumbers: List<Int>) {
         val bonusNumber = number.toIntOrNull()
+        require(!winningNumbers.contains(bonusNumber)) { ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText() }
         require(bonusNumber != null) { ErrorMessage.INVALID_BONUS_NUMBER_FORMAT.formattedText() }
         require(bonusNumber in 1..45) { ErrorMessage.INVALID_BONUS_NUMBER_RANGE.formattedText() }
     }
