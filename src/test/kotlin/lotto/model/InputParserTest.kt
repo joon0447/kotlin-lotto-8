@@ -20,7 +20,7 @@ class InputParserTest {
         val exception = assertThrows(IllegalArgumentException::class.java){
             InputParser.parseWinningNumbers("")
         }
-        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText(), exception.message)
+        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.toString(), exception.message)
     }
 
     @Test
@@ -28,6 +28,6 @@ class InputParserTest {
         val exception = assertThrows(IllegalArgumentException::class.java){
             InputParser.parseWinningNumbers("1,,2,3,4,5")
         }
-        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText(), exception.message)
+        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.toString(), exception.message)
     }
 }

@@ -33,7 +33,7 @@ class LottoTest {
         val exception = Assertions.assertThrows(IllegalArgumentException::class.java) {
             Lotto(listOf(1,2,3,-50,100,6))
         }
-        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText(), exception.message)
+        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.toString(), exception.message)
     }
 
     @Test

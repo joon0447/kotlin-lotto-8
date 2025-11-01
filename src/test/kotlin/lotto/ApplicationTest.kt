@@ -46,7 +46,7 @@ class ApplicationTest : NsTest() {
     fun `가격에 문자 포함`() {
         assertSimpleTest {
             runException("1000j")
-            assertThat(output()).contains(ErrorMessage.INVALID_AMOUNT_FORMAT.formattedText())
+            assertThat(output()).contains(ErrorMessage.INVALID_AMOUNT_FORMAT.toString())
         }
     }
 
@@ -54,7 +54,7 @@ class ApplicationTest : NsTest() {
     fun `로또 번호에 빈 값 포함`() {
         assertSimpleTest {
             runException("1000", "1,3,,4,5,6")
-            assertThat(output()).contains(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText())
+            assertThat(output()).contains(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.toString())
         }
     }
 
@@ -62,7 +62,7 @@ class ApplicationTest : NsTest() {
     fun `로또 번호에 포함된 보너스 번호 입력`() {
         assertSimpleTest {
             runException("1000", "1,2,3,4,5,6", "5")
-            assertThat(output()).contains(ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText())
+            assertThat(output()).contains(ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.toString())
         }
     }
 

@@ -19,7 +19,7 @@ class InputValidatorTest {
         val exception = Assertions.assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("1500")
         }
-        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_UNIT.formattedText(), exception.message)
+        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_UNIT.toString(), exception.message)
     }
 
     @Test
@@ -27,7 +27,7 @@ class InputValidatorTest {
         val exception = Assertions.assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("500")
         }
-        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_RANGE.formattedText(), exception.message)
+        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_RANGE.toString(), exception.message)
     }
 
     @Test
@@ -35,7 +35,7 @@ class InputValidatorTest {
         val exception = Assertions.assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("1205d")
         }
-        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_FORMAT.formattedText(), exception.message)
+        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_FORMAT.toString(), exception.message)
     }
 
     @Test
@@ -45,7 +45,7 @@ class InputValidatorTest {
             InputValidator.validateInputBonusNumber("3", winningNumbers)
         }
         Assertions.assertEquals(
-            ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText(),
+            ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.toString(),
             exception.message
         )
     }
@@ -58,7 +58,7 @@ class InputValidatorTest {
             InputValidator.validateInputBonusNumber(input, winningNumbers)
         }
         Assertions.assertEquals(
-            ErrorMessage.INVALID_BONUS_NUMBER_FORMAT.formattedText(),
+            ErrorMessage.INVALID_BONUS_NUMBER_FORMAT.toString(),
             exception.message
         )
     }
@@ -71,7 +71,7 @@ class InputValidatorTest {
             InputValidator.validateInputBonusNumber(input, winningNumbers)
         }
         Assertions.assertEquals(
-            ErrorMessage.INVALID_BONUS_NUMBER_RANGE.formattedText(),
+            ErrorMessage.INVALID_BONUS_NUMBER_RANGE.toString(),
             exception.message
         )
     }
@@ -83,7 +83,7 @@ class InputValidatorTest {
             InputValidator.validateInputBonusNumber("1", winningNumbers)
         }
         Assertions.assertEquals(
-            ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText(),
+            ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.toString(),
             exception.message
         )
     }
