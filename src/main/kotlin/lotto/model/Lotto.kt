@@ -8,9 +8,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == numbers.toSet().size) { ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE }
         require(numbers.size == 6) { ErrorMessage.INVALID_WINNING_NUMBERS_COUNT }
-        numbers.forEach { number ->
-            require(number in 1..45) { ErrorMessage.INVALID_WINNING_NUMBERS_RANGE }
-        }
+        require(numbers.all { it in 1..45 }) { ErrorMessage.INVALID_WINNING_NUMBERS_RANGE }
     }
 
     fun calculateWinningResults(lottos: List<List<Int>>, bonusNumber: Int): Map<Rank, Int> {
@@ -25,11 +23,7 @@ class Lotto(private val numbers: List<Int>) {
     fun getWinningNumbers() = numbers
 
     private fun initializeWinningResults(winningResults: MutableMap<Rank, Int>) {
-        winningResults[Rank.FIRST] = 0
-        winningResults[Rank.SECOND] = 0
-        winningResults[Rank.THIRD] = 0
-        winningResults[Rank.FOURTH] = 0
-        winningResults[Rank.FIFTH] = 0
+        Rank.entries.forEach { winningResults[it] = 0 }
     }
 
     private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<Rank, Int>, bonusNumber: Int) {
