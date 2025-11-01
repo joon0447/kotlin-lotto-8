@@ -9,7 +9,7 @@ object ProfitCalculator {
     private const val FOURTH_PRIZE_MONEY = 50000
     private const val FIFTH_PRIZE_MONEY = 5000
 
-    fun calculateProfit(buyMoney: Int, winningResults: MutableMap<String, Int>): String {
+    fun calculateProfit(buyMoney: Int, winningResults: Map<String, Int>): String {
         val prizeMoney = mutableMapOf<String, Int>()
         initializePrizeMoney(prizeMoney)
 

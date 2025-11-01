@@ -4,6 +4,7 @@ import lotto.model.InputParser
 import lotto.model.InputValidator
 import lotto.model.Lotto
 import lotto.model.MyLotto
+import lotto.model.ProfitCalculator
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -28,5 +29,7 @@ class LottoController {
         lotto.setBonusNumber(bonusNumber.toInt())
         val winningCount = lotto.calculateWinningResults(myLotto.getLottos())
         OutputView.printWinningStatistics(winningCount)
+        val profit = ProfitCalculator.calculateProfit(purchaseAmount.toInt(), winningCount)
+        OutputView.printProfit(profit.toDouble())
     }
 }

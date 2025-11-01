@@ -28,4 +28,8 @@ object OutputView {
         printResult.append(OutputMessage.WINNING_FIRST.formattedText(winningStatistics.getOrDefault(Key.FIRST.value, 0)))
         println(printResult.toString())
     }
+
+    fun printProfit(profit: Double) {
+        println("총 수익률은 $profit%입니다.")
+    }
 }
