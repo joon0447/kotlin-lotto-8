@@ -6,7 +6,7 @@ import lotto.constant.message.OutputMessage
 object OutputView {
 
     fun printLottoCount(count: Int) {
-        println("${count}개를 구매했습니다.")
+        println("$count${OutputMessage.PURCHASE_LOTTO_COUNT.text}")
     }
 
     fun printLottosNumber(lottos: List<List<Int>>) {
@@ -35,6 +35,6 @@ object OutputView {
     }
 
     fun printProfit(profit: Double) {
-        println("총 수익률은 $profit%입니다.")
+        println(OutputMessage.PROFIT.formattedProfitText(profit))
     }
 }
