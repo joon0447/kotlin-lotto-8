@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
+import lotto.constant.message.ErrorMessage
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -42,18 +43,30 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `가격에 문자 포함`() {
         assertSimpleTest {
             runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThat(output()).contains(ErrorMessage.INVALID_AMOUNT_FORMAT.formattedText())
+        }
+    }
+
+    @Test
+    fun `로또 번호에 빈 값 포함`() {
+        assertSimpleTest {
+            runException("1000", "1,3,,4,5,6")
+            assertThat(output()).contains(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText())
+        }
+    }
+
+    @Test
+    fun `로또 번호에 포함된 보너스 번호 입력`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "5")
+            assertThat(output()).contains(ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText())
         }
     }
 
     override fun runMain() {
         main()
-    }
-
-    companion object {
-        private const val ERROR_MESSAGE: String = "[ERROR]"
     }
 }
