@@ -6,12 +6,11 @@ object InputParser {
 
     fun parseWinningNumbers(rawWinningNumbers: String): List<Int> {
         val winningNumbers = mutableListOf<Int>()
-
-        winningNumbers.addAll(rawWinningNumbers.split(",").map {
-            val num = it.toIntOrNull()
+        rawWinningNumbers.split(",").forEach { value ->
+            val num = value.toIntOrNull()
             require(num != null) { ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText() }
-            num
-        })
+            winningNumbers.add(num)
+        }
         return winningNumbers
     }
 }
