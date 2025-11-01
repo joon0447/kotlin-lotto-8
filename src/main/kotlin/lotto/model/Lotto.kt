@@ -13,18 +13,11 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    var bonusNumber: Int? = null
-        private set
-
-    fun setBonusNumber(bonusNumber: Int) {
-        this.bonusNumber = bonusNumber
-    }
-
-    fun calculateWinningResults(lottos: List<List<Int>>): Map<String, Int> {
+    fun calculateWinningResults(lottos: List<List<Int>>, bonusNumber: Int): Map<String, Int> {
         val winningResults = mutableMapOf<String, Int>()
         initializeWinningResults(winningResults)
         lottos.forEach { lotto ->
-            updateWinningResults(lotto, winningResults)
+            updateWinningResults(lotto, winningResults, bonusNumber)
         }
         return winningResults
     }
@@ -37,7 +30,7 @@ class Lotto(private val numbers: List<Int>) {
         winningResults[Key.FIFTH.value] = 0
     }
 
-    private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<String, Int>) {
+    private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<String, Int>, bonusNumber: Int) {
         val winningCount = lotto.count { numbers.contains(it) }
         when (winningCount) {
             6 -> winningResults[Key.FIRST.value] = winningResults.getOrDefault(Key.FIRST.value, 0) + 1

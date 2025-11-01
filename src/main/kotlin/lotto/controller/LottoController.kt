@@ -21,14 +21,14 @@ class LottoController {
 
         val rawWinningNumbers = InputView.inputWinningNumbers()
         val parseWinningNumbers = InputParser.parseWinningNumbers(rawWinningNumbers)
-        InputValidator.validateInputWinningNumber(parseWinningNumbers)
         val lotto = Lotto(parseWinningNumbers)
 
         val bonusNumber = InputView.inputBonusNumber()
         InputValidator.validateInputBonusNumber(bonusNumber, parseWinningNumbers)
-        lotto.setBonusNumber(bonusNumber.toInt())
-        val winningCount = lotto.calculateWinningResults(myLotto.getLottos())
+
+        val winningCount = lotto.calculateWinningResults(myLotto.getLottos(), bonusNumber.toInt())
         OutputView.printWinningStatistics(winningCount)
+
         val profit = ProfitCalculator.calculateProfit(purchaseAmount.toInt(), winningCount)
         OutputView.printProfit(profit.toDouble())
     }
