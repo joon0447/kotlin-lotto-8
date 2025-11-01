@@ -19,7 +19,7 @@ class Lotto(private val numbers: List<Int>) {
         lottos.forEach { lotto ->
             updateWinningResults(lotto, winningResults, bonusNumber)
         }
-        return winningResults
+        return winningResults.toSortedMap(compareByDescending { it.rank })
     }
 
     fun getWinningNumbers() = numbers
