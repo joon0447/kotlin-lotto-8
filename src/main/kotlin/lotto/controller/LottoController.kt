@@ -26,17 +26,29 @@ class LottoController {
     }
 
     private fun readPurchaseAmount(): String {
-        val purchaseAmount = InputView.inputPurchaseAmount()
-        InputValidator.validateInputPrice(purchaseAmount)
-        return purchaseAmount
+        while (true) {
+            try {
+                val purchaseAmount = InputView.inputPurchaseAmount()
+                InputValidator.validateInputPrice(purchaseAmount)
+                return purchaseAmount
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     private fun readBonusNumber(parseWinningNumbers: List<Int>): String {
-        val bonusNumber = InputView.inputBonusNumber()
-        InputValidator.validateInputBonusNumber(bonusNumber, parseWinningNumbers)
-        return bonusNumber
-    }
+        while (true) {
+            try {
+                val bonusNumber = InputView.inputBonusNumber()
+                InputValidator.validateInputBonusNumber(bonusNumber, parseWinningNumbers)
+                return bonusNumber
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
 
+    }
 
     private fun createMyLotto(purchaseAmount: String): MyLotto {
         val myLotto = MyLotto()
@@ -47,9 +59,15 @@ class LottoController {
     }
 
     private fun createWinningLotto(): Lotto {
-        val rawWinningNumbers = InputView.inputWinningNumbers()
-        val parseWinningNumbers = InputParser.parseWinningNumbers(rawWinningNumbers)
-        return Lotto(parseWinningNumbers)
+        while (true) {
+            try {
+                val rawWinningNumbers = InputView.inputWinningNumbers()
+                val parseWinningNumbers = InputParser.parseWinningNumbers(rawWinningNumbers)
+                return Lotto(parseWinningNumbers)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     private fun calculateWinningResult(lotto: Lotto, myLotto: MyLotto, bonusNumber: String): Map<String, Int> {
