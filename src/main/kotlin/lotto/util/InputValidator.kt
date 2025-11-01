@@ -1,4 +1,4 @@
-package lotto.model
+package lotto.util
 
 import lotto.constant.message.ErrorMessage
 

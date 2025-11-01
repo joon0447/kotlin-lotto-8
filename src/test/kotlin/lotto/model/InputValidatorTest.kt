@@ -1,6 +1,7 @@
 package lotto.model
 
 import lotto.constant.message.ErrorMessage
+import lotto.util.InputValidator
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test

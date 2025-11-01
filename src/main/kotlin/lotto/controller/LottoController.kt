@@ -1,7 +1,7 @@
 package lotto.controller
 
 import lotto.model.InputParser
-import lotto.model.InputValidator
+import lotto.util.InputValidator
 import lotto.model.Lotto
 import lotto.model.MyLotto
 import lotto.model.ProfitCalculator
