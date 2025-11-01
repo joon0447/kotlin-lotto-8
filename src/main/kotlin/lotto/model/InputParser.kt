@@ -8,7 +8,7 @@ object InputParser {
         val winningNumbers = mutableListOf<Int>()
         rawWinningNumbers.split(",").forEach { value ->
             val num = value.toIntOrNull()
-            require(num != null) { ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.formattedText() }
+            require(num != null) { ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT }
             winningNumbers.add(num)
         }
         return winningNumbers

@@ -6,7 +6,7 @@ import lotto.constant.message.OutputMessage
 object OutputView {
 
     fun printLottoCount(count: Int) {
-        println("$count${OutputMessage.PURCHASE_LOTTO_COUNT.text}")
+        println("$count${OutputMessage.PURCHASE_LOTTO_COUNT}")
     }
 
     fun printLottosNumber(lottos: List<List<Int>>) {
@@ -20,8 +20,8 @@ object OutputView {
     fun printWinningStatistics(winningStatistics: Map<Rank, Int>) {
         val printResult = StringBuilder()
 
-        printResult.append(OutputMessage.START_WINNING_STATISTICS.text)
-        printResult.append(OutputMessage.WINNING_STATISTICS_DIVIDER.text)
+        printResult.append(OutputMessage.START_WINNING_STATISTICS)
+        printResult.append(OutputMessage.WINNING_STATISTICS_DIVIDER)
 
         winningStatistics
             .forEach { (rank, count) ->

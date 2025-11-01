@@ -6,10 +6,10 @@ import kotlin.collections.set
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == numbers.toSet().size) { ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE.formattedText() }
-        require(numbers.size == 6) { ErrorMessage.INVALID_WINNING_NUMBERS_COUNT.formattedText() }
+        require(numbers.size == numbers.toSet().size) { ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE }
+        require(numbers.size == 6) { ErrorMessage.INVALID_WINNING_NUMBERS_COUNT }
         numbers.forEach { number ->
-            require(number in 1..45) { ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText() }
+            require(number in 1..45) { ErrorMessage.INVALID_WINNING_NUMBERS_RANGE }
         }
     }
 

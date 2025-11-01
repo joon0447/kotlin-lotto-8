@@ -15,7 +15,5 @@ enum class ErrorMessage(val text: String) {
     INVALID_BONUS_NUMBER_RANGE("보너스 번호는 1~45 사이의 숫자이여야 합니다."),
     INVALID_BONUS_NUMBER_DUPLICATE("당첨 번호는 보너스 번호로 사용할 수 없습니다.");
 
-    fun formattedText(): String {
-        return "[ERROR] $text"
-    }
+    override fun toString(): String = "[ERROR] $text"
 }

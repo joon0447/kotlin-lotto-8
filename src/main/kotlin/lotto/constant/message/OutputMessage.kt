@@ -10,6 +10,8 @@ enum class OutputMessage(val text: String) {
         return text.format(profit)
     }
 
+    override fun toString(): String = text
+
     companion object {
         fun formattedStatistics(match: Int, prizeMoney: Int, count: Int, bonus: Boolean = false): String {
             val bonusText = if (bonus) ", 보너스 볼 일치" else ""
