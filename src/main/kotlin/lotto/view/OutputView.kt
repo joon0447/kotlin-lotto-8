@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.constant.Key
+import lotto.constant.Rank
 import lotto.constant.message.OutputMessage
 
 object OutputView {
@@ -20,11 +20,11 @@ object OutputView {
     fun printWinningStatistics(winningStatistics: Map<String, Int>) {
         val printResult = StringBuilder()
         val messages = listOf(
-            Key.FIFTH to OutputMessage.WINNING_FIFTH,
-            Key.FOURTH to OutputMessage.WINNING_FOURTH,
-            Key.THIRD to OutputMessage.WINNING_THIRD,
-            Key.SECOND to OutputMessage.WINNING_SECOND,
-            Key.FIRST to OutputMessage.WINNING_FIRST
+            Rank.FIFTH to OutputMessage.WINNING_FIFTH,
+            Rank.FOURTH to OutputMessage.WINNING_FOURTH,
+            Rank.THIRD to OutputMessage.WINNING_THIRD,
+            Rank.SECOND to OutputMessage.WINNING_SECOND,
+            Rank.FIRST to OutputMessage.WINNING_FIRST
         )
         printResult.append(OutputMessage.START_WINNING_STATISTICS.text)
         printResult.append(OutputMessage.WINNING_STATISTICS_DIVIDER.text)

@@ -1,6 +1,6 @@
 package lotto.model
 
-import lotto.constant.Key
+import lotto.constant.Rank
 import lotto.constant.message.ErrorMessage
 import kotlin.collections.set
 
@@ -25,23 +25,23 @@ class Lotto(private val numbers: List<Int>) {
     fun getWinningNumbers() = numbers
 
     private fun initializeWinningResults(winningResults: MutableMap<String, Int>) {
-        winningResults[Key.FIRST.value] = 0
-        winningResults[Key.SECOND.value] = 0
-        winningResults[Key.THIRD.value] = 0
-        winningResults[Key.FOURTH.value] = 0
-        winningResults[Key.FIFTH.value] = 0
+        winningResults[Rank.FIRST.value] = 0
+        winningResults[Rank.SECOND.value] = 0
+        winningResults[Rank.THIRD.value] = 0
+        winningResults[Rank.FOURTH.value] = 0
+        winningResults[Rank.FIFTH.value] = 0
     }
 
     private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<String, Int>, bonusNumber: Int) {
         val winningCount = lotto.count { numbers.contains(it) }
         when (winningCount) {
-            6 -> winningResults[Key.FIRST.value] = winningResults.getOrDefault(Key.FIRST.value, 0) + 1
-            5 if lotto.contains(bonusNumber) -> winningResults[Key.SECOND.value] =
-                winningResults.getOrDefault(Key.SECOND.value, 0) + 1
+            6 -> winningResults[Rank.FIRST.value] = winningResults.getOrDefault(Rank.FIRST.value, 0) + 1
+            5 if lotto.contains(bonusNumber) -> winningResults[Rank.SECOND.value] =
+                winningResults.getOrDefault(Rank.SECOND.value, 0) + 1
 
-            5 -> winningResults[Key.THIRD.value] = winningResults.getOrDefault(Key.THIRD.value, 0) + 1
-            4 -> winningResults[Key.FOURTH.value] = winningResults.getOrDefault(Key.FOURTH.value, 0) + 1
-            3 -> winningResults[Key.FIFTH.value] = winningResults.getOrDefault(Key.FIFTH.value, 0) + 1
+            5 -> winningResults[Rank.THIRD.value] = winningResults.getOrDefault(Rank.THIRD.value, 0) + 1
+            4 -> winningResults[Rank.FOURTH.value] = winningResults.getOrDefault(Rank.FOURTH.value, 0) + 1
+            3 -> winningResults[Rank.FIFTH.value] = winningResults.getOrDefault(Rank.FIFTH.value, 0) + 1
         }
     }
 }

@@ -1,6 +1,6 @@
 package lotto.constant
 
-enum class Key(val value: String) {
+enum class Rank(val value: String) {
     FIRST("1st"),
     SECOND("2nd"),
     THIRD("3rd"),

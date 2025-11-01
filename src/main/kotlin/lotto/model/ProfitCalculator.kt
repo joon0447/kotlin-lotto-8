@@ -1,6 +1,6 @@
 package lotto.model
 
-import lotto.constant.Key
+import lotto.constant.Rank
 
 object ProfitCalculator {
     private const val FIRST_PRIZE_MONEY = 2000000000
@@ -24,10 +24,10 @@ object ProfitCalculator {
     }
 
     private fun initializePrizeMoney(prizeMoney: MutableMap<String, Int>) {
-        prizeMoney[Key.FIRST.value] = FIRST_PRIZE_MONEY
-        prizeMoney[Key.SECOND.value] = SECOND_PRIZE_MONEY
-        prizeMoney[Key.THIRD.value] = THIRD_PRIZE_MONEY
-        prizeMoney[Key.FOURTH.value] = FOURTH_PRIZE_MONEY
-        prizeMoney[Key.FIFTH.value] = FIFTH_PRIZE_MONEY
+        prizeMoney[Rank.FIRST.value] = FIRST_PRIZE_MONEY
+        prizeMoney[Rank.SECOND.value] = SECOND_PRIZE_MONEY
+        prizeMoney[Rank.THIRD.value] = THIRD_PRIZE_MONEY
+        prizeMoney[Rank.FOURTH.value] = FOURTH_PRIZE_MONEY
+        prizeMoney[Rank.FIFTH.value] = FIFTH_PRIZE_MONEY
     }
 }
