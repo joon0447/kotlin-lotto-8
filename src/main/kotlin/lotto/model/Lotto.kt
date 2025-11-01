@@ -13,8 +13,8 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun calculateWinningResults(lottos: List<List<Int>>, bonusNumber: Int): Map<String, Int> {
-        val winningResults = mutableMapOf<String, Int>()
+    fun calculateWinningResults(lottos: List<List<Int>>, bonusNumber: Int): Map<Rank, Int> {
+        val winningResults = mutableMapOf<Rank, Int>()
         initializeWinningResults(winningResults)
         lottos.forEach { lotto ->
             updateWinningResults(lotto, winningResults, bonusNumber)
@@ -24,24 +24,24 @@ class Lotto(private val numbers: List<Int>) {
 
     fun getWinningNumbers() = numbers
 
-    private fun initializeWinningResults(winningResults: MutableMap<String, Int>) {
-        winningResults[Rank.FIRST.value] = 0
-        winningResults[Rank.SECOND.value] = 0
-        winningResults[Rank.THIRD.value] = 0
-        winningResults[Rank.FOURTH.value] = 0
-        winningResults[Rank.FIFTH.value] = 0
+    private fun initializeWinningResults(winningResults: MutableMap<Rank, Int>) {
+        winningResults[Rank.FIRST] = 0
+        winningResults[Rank.SECOND] = 0
+        winningResults[Rank.THIRD] = 0
+        winningResults[Rank.FOURTH] = 0
+        winningResults[Rank.FIFTH] = 0
     }
 
-    private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<String, Int>, bonusNumber: Int) {
+    private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<Rank, Int>, bonusNumber: Int) {
         val winningCount = lotto.count { numbers.contains(it) }
         when (winningCount) {
-            6 -> winningResults[Rank.FIRST.value] = winningResults.getOrDefault(Rank.FIRST.value, 0) + 1
-            5 if lotto.contains(bonusNumber) -> winningResults[Rank.SECOND.value] =
-                winningResults.getOrDefault(Rank.SECOND.value, 0) + 1
+            6 -> winningResults[Rank.FIRST] = winningResults.getOrDefault(Rank.FIRST, 0) + 1
+            5 if lotto.contains(bonusNumber) -> winningResults[Rank.SECOND] =
+                winningResults.getOrDefault(Rank.SECOND, 0) + 1
 
-            5 -> winningResults[Rank.THIRD.value] = winningResults.getOrDefault(Rank.THIRD.value, 0) + 1
-            4 -> winningResults[Rank.FOURTH.value] = winningResults.getOrDefault(Rank.FOURTH.value, 0) + 1
-            3 -> winningResults[Rank.FIFTH.value] = winningResults.getOrDefault(Rank.FIFTH.value, 0) + 1
+            5 -> winningResults[Rank.THIRD] = winningResults.getOrDefault(Rank.THIRD, 0) + 1
+            4 -> winningResults[Rank.FOURTH] = winningResults.getOrDefault(Rank.FOURTH, 0) + 1
+            3 -> winningResults[Rank.FIFTH] = winningResults.getOrDefault(Rank.FIFTH, 0) + 1
         }
     }
 }

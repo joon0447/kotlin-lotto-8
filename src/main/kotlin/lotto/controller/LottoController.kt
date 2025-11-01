@@ -1,5 +1,6 @@
 package lotto.controller
 
+import lotto.constant.Rank
 import lotto.model.InputParser
 import lotto.util.InputValidator
 import lotto.model.Lotto
@@ -19,7 +20,7 @@ class LottoController {
         printResults(purchaseAmount, winningResults)
     }
 
-    private fun printResults(purchaseAmount: String, winningResults: Map<String, Int>) {
+    private fun printResults(purchaseAmount: String, winningResults: Map<Rank, Int>) {
         OutputView.printWinningStatistics(winningResults)
         val profit = ProfitCalculator.calculateProfit(purchaseAmount.toInt(), winningResults)
         OutputView.printProfit(profit.toDouble())
@@ -69,7 +70,7 @@ class LottoController {
         }
     }
 
-    private fun calculateWinningResult(lotto: Lotto, myLotto: MyLotto, bonusNumber: String): Map<String, Int> {
+    private fun calculateWinningResult(lotto: Lotto, myLotto: MyLotto, bonusNumber: String): Map<Rank, Int> {
         return lotto.calculateWinningResults(myLotto.getLottos(), bonusNumber.toInt())
     }
 }

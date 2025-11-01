@@ -1,9 +1,9 @@
 package lotto.constant
 
-enum class Rank(val value: String) {
-    FIRST("1st"),
-    SECOND("2nd"),
-    THIRD("3rd"),
-    FOURTH("4th"),
-    FIFTH("5th"),
+enum class Rank(val rank: Int, val match: Int, val prizeMoney: Int, val bonus: Boolean = false) {
+    FIRST(1,6,2_000_000_000),
+    SECOND(2, 5, 30_000_000, true),
+    THIRD(3, 5, 1_500_000),
+    FOURTH(4, 4, 50_000),
+    FIFTH(5, 3, 5_000),
 }

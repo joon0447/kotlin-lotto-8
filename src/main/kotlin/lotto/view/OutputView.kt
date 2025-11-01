@@ -17,7 +17,7 @@ object OutputView {
         println(lottoNumbers.toString())
     }
 
-    fun printWinningStatistics(winningStatistics: Map<String, Int>) {
+    fun printWinningStatistics(winningStatistics: Map<Rank, Int>) {
         val printResult = StringBuilder()
         val messages = listOf(
             Rank.FIFTH to OutputMessage.WINNING_FIFTH,
@@ -28,8 +28,8 @@ object OutputView {
         )
         printResult.append(OutputMessage.START_WINNING_STATISTICS.text)
         printResult.append(OutputMessage.WINNING_STATISTICS_DIVIDER.text)
-        messages.forEach { (key, message) ->
-            printResult.append(message.formattedText(winningStatistics.getOrDefault(key.value, 0)))
+        messages.forEach { (rank, message) ->
+            printResult.append(message.formattedText(winningStatistics.getOrDefault(rank, 0)))
         }
         println(printResult.toString())
     }
