@@ -47,7 +47,6 @@ class LottoController {
                 println(e.message)
             }
         }
-
     }
 
     private fun createMyLotto(purchaseAmount: String): MyLotto {
