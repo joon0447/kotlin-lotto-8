@@ -22,6 +22,8 @@ class Lotto(private val numbers: List<Int>) {
         return winningResults
     }
 
+    fun getWinningNumbers() = numbers
+
     private fun initializeWinningResults(winningResults: MutableMap<String, Int>) {
         winningResults[Key.FIRST.value] = 0
         winningResults[Key.SECOND.value] = 0
