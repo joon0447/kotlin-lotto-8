@@ -35,7 +35,7 @@ class InputValidatorTest {
         val exception = Assertions.assertThrows(IllegalArgumentException::class.java) {
             InputValidator.validateInputPrice("1205d")
         }
-        Assertions.assertEquals(ErrorMessage.INVALID_AMOUND_FORMAT.formattedText(), exception.message)
+        Assertions.assertEquals(ErrorMessage.INVALID_AMOUNT_FORMAT.formattedText(), exception.message)
     }
 
     @Test
