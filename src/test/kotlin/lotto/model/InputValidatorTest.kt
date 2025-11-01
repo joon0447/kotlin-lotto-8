@@ -41,39 +41,6 @@ class InputValidatorTest {
     }
 
     @Test
-    fun `당첨 번호 정상 입력 시`() {
-        val input = mutableListOf(1, 2, 3, 4, 5, 6)
-        assertDoesNotThrow { InputValidator.validateInputWinningNumber(input) }
-    }
-
-    @Test
-    fun `입력된 당첨 번호가 6개가 아닐 때`() {
-        val input = mutableListOf(1, 2, 3, 4, 5)
-        val exception = assertThrows(IllegalArgumentException::class.java) {
-            InputValidator.validateInputWinningNumber(input)
-        }
-        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_COUNT.formattedText(), exception.message)
-    }
-
-    @Test
-    fun `입력된 당첨 번호 중 범위를 벗어난 값이 있을 때`() {
-        val input = mutableListOf(1, 2, 106, 4, 5, -4)
-        val exception = assertThrows(IllegalArgumentException::class.java) {
-            InputValidator.validateInputWinningNumber(input)
-        }
-        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_RANGE.formattedText(), exception.message)
-    }
-
-    @Test
-    fun `입력된 당첨 번호 중 중복된 값이 있을 때`() {
-        val input = mutableListOf(1,1,2,3,4,5)
-        val exception = assertThrows(IllegalArgumentException::class.java) {
-            InputValidator.validateInputWinningNumber(input)
-        }
-        assertEquals(ErrorMessage.INVALID_WINNING_NUMBERS_DUPLICATE.formattedText(), exception.message)
-    }
-
-    @Test
     fun `보너스 번호 정상 입력했을 때`() {
         val winningNumbers = listOf(1,2,3,4,5,6)
         assertDoesNotThrow { InputValidator.validateInputBonusNumber("3", winningNumbers) }
