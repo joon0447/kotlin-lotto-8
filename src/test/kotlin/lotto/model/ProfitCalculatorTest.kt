@@ -9,12 +9,12 @@ class ProfitCalculatorTest {
     @Test
     fun `수익률 계산`() {
         val total = 8000
-        val winningResults = mutableMapOf<String, Int>()
-        winningResults[Rank.FIRST.value] = 0
-        winningResults[Rank.SECOND.value] = 0
-        winningResults[Rank.THIRD.value] = 0
-        winningResults[Rank.FOURTH.value] = 0
-        winningResults[Rank.FIFTH.value] = 1
+        val winningResults = mutableMapOf<Rank, Int>()
+        winningResults[Rank.FIRST] = 0
+        winningResults[Rank.SECOND] = 0
+        winningResults[Rank.THIRD] = 0
+        winningResults[Rank.FOURTH] = 0
+        winningResults[Rank.FIFTH] = 1
 
         assertEquals("62.5", ProfitCalculator.calculateProfit(total, winningResults))
     }

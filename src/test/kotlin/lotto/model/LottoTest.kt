@@ -1,5 +1,6 @@
 package lotto.model
 
+import lotto.constant.Rank
 import lotto.constant.message.ErrorMessage
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -48,11 +49,11 @@ class LottoTest {
         val lotto = Lotto(winningNumber)
 
         val result = lotto.calculateWinningResults(myLotto, 10)
-        assertEquals(1, result["1st"])
-        assertEquals(1, result["2nd"])
-        assertEquals(1, result["3rd"])
-        assertEquals(1, result["4th"])
-        assertEquals(1, result["5th"])
+        assertEquals(1, result[Rank.FIRST])
+        assertEquals(1, result[Rank.SECOND])
+        assertEquals(1, result[Rank.THIRD])
+        assertEquals(1, result[Rank.FOURTH])
+        assertEquals(1, result[Rank.FIFTH])
     }
 
     @Test
@@ -68,10 +69,10 @@ class LottoTest {
         val lotto = Lotto(winningNumber)
 
         val result = lotto.calculateWinningResults(myLotto, 10)
-        assertEquals(2, result["1st"])
-        assertEquals(0, result["2nd"])
-        assertEquals(0, result["3rd"])
-        assertEquals(0, result["4th"])
-        assertEquals(3, result["5th"])
+        assertEquals(2, result[Rank.FIRST])
+        assertEquals(0, result[Rank.SECOND])
+        assertEquals(0, result[Rank.THIRD])
+        assertEquals(0, result[Rank.FOURTH])
+        assertEquals(3, result[Rank.FIFTH])
     }
 }
