@@ -19,13 +19,18 @@ object OutputView {
 
     fun printWinningStatistics(winningStatistics: Map<String, Int>) {
         val printResult = StringBuilder()
+        val messages = listOf(
+            Key.FIFTH to OutputMessage.WINNING_FIFTH,
+            Key.FOURTH to OutputMessage.WINNING_FOURTH,
+            Key.THIRD to OutputMessage.WINNING_THIRD,
+            Key.SECOND to OutputMessage.WINNING_SECOND,
+            Key.FIRST to OutputMessage.WINNING_FIRST
+        )
         printResult.append(OutputMessage.START_WINNING_STATISTICS.text)
         printResult.append(OutputMessage.WINNING_STATISTICS_DIVIDER.text)
-        printResult.append(OutputMessage.WINNING_FIFTH.formattedText(winningStatistics.getOrDefault(Key.FIFTH.value, 0)))
-        printResult.append(OutputMessage.WINNING_FOURTH.formattedText(winningStatistics.getOrDefault(Key.FOURTH.value, 0)))
-        printResult.append(OutputMessage.WINNING_THIRD.formattedText(winningStatistics.getOrDefault(Key.THIRD.value, 0)))
-        printResult.append(OutputMessage.WINNING_SECOND.formattedText(winningStatistics.getOrDefault(Key.SECOND.value, 0)))
-        printResult.append(OutputMessage.WINNING_FIRST.formattedText(winningStatistics.getOrDefault(Key.FIRST.value, 0)))
+        messages.forEach { (key, message) ->
+            printResult.append(message.formattedText(winningStatistics.getOrDefault(key.value, 0)))
+        }
         println(printResult.toString())
     }
 
