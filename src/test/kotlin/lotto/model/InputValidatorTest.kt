@@ -43,7 +43,11 @@ class InputValidatorTest {
     @Test
     fun `보너스 번호 정상 입력했을 때`() {
         val winningNumbers = listOf(1,2,3,4,5,6)
-        assertDoesNotThrow { InputValidator.validateInputBonusNumber("3", winningNumbers) }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            InputValidator.validateInputBonusNumber("3", winningNumbers)
+        }
+        assertEquals(ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.formattedText(),
+            exception.message)
     }
 
     @ParameterizedTest
