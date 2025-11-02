@@ -27,8 +27,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun updateWinningResults(lotto: List<Int>, winningResults: MutableMap<Rank, Int>, bonusNumber: Int) {
-        val winningCount = lotto.count { numbers.contains(it) }
-        when (winningCount) {
+        val matchCount = lotto.count { numbers.contains(it) }
+        when (matchCount) {
             6 -> winningResults[Rank.FIRST] = winningResults.getOrDefault(Rank.FIRST, 0) + 1
             5 if lotto.contains(bonusNumber) -> winningResults[Rank.SECOND] =
                 winningResults.getOrDefault(Rank.SECOND, 0) + 1
