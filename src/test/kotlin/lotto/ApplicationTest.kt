@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
+    fun `정상적인 값을 입력하면 프로그램이 정상 작동한다`() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("8000", "1,2,3,4,5,6", "7")
@@ -43,7 +43,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `가격에 문자 포함`() {
+    fun `구입 금액에 문자가 포함되면 INVALID_AMOUNT_FORMAT 메시지를 출력한다`() {
         assertSimpleTest {
             runException("1000j")
             assertThat(output()).contains(ErrorMessage.INVALID_AMOUNT_FORMAT.toString())
@@ -51,7 +51,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `로또 번호에 빈 값 포함`() {
+    fun `당첨 번호에 빈 값이 포함되면 INVALID_WINNING_NUMBERS_FORMAT 메시지를 출력한다`() {
         assertSimpleTest {
             runException("1000", "1,3,,4,5,6")
             assertThat(output()).contains(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.toString())
@@ -59,7 +59,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `로또 번호에 포함된 보너스 번호 입력`() {
+    fun `당첨 번호에 포함된 번호가 보너스 번호로 입력되면 INVALID_BONUS_NUMBER_DUPLICATE 메시지를 출력한다`() {
         assertSimpleTest {
             runException("1000", "1,2,3,4,5,6", "5")
             assertThat(output()).contains(ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE.toString())

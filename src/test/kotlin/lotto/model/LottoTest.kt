@@ -37,7 +37,7 @@ class LottoTest {
     }
 
     @Test
-    fun `로또 당첨 계산`() {
+    fun `등수별로 당첨된 로또가 1개씩 있을 때 정상적으로 계산한다`() {
         val winningNumber = listOf(1,2,3,4,5,6)
         val myLotto = mutableListOf<List<Int>>()
         myLotto.add(listOf(1,2,3,4,5,6)) // 1등
@@ -57,7 +57,7 @@ class LottoTest {
     }
 
     @Test
-    fun `로또 당첨 계산 2`() {
+    fun `등수가 중복으로 집계될 때 정상적으로 계산한다`() {
         val winningNumber = listOf(1,2,3,4,5,6)
         val myLotto = mutableListOf<List<Int>>()
         myLotto.add(listOf(1,2,3,4,5,6)) // 1등
