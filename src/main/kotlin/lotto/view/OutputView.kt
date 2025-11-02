@@ -30,7 +30,7 @@ object OutputView {
                     rank.match,
                     rank.prizeMoney,
                     count,
-                    rank == Rank.SECOND
+                    rank.bonus
                 )
             )
         }
