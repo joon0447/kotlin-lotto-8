@@ -6,7 +6,7 @@ import lotto.constant.message.InputMessage
 object InputView {
 
     private fun inputValue(message: InputMessage): String {
-        println(message.text)
+        println(message)
         return Console.readLine()
     }
 
