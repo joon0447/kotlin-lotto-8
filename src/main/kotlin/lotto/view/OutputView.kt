@@ -19,21 +19,14 @@ object OutputView {
 
     fun printWinningStatistics(winningStatistics: Map<Rank, Int>) {
         val printResult = StringBuilder()
-
         printResult.append(OutputMessage.START_WINNING_STATISTICS)
         printResult.append(OutputMessage.WINNING_STATISTICS_DIVIDER)
-
         winningStatistics
             .forEach { (rank, count) ->
-            printResult.append(
-                OutputMessage.formattedStatistics(
-                    rank.match,
-                    rank.prizeMoney,
-                    count,
-                    rank.bonus
+                printResult.append(
+                    OutputMessage.formattedStatistics(rank.match, rank.prizeMoney, count, rank.bonus)
                 )
-            )
-        }
+            }
         println(printResult.toString())
     }
 
