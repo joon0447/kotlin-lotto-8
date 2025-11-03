@@ -1,5 +1,6 @@
 package lotto.util
 
+import lotto.constant.LottoRule
 import lotto.constant.message.ErrorMessage
 
 object InputValidator {
@@ -7,14 +8,15 @@ object InputValidator {
     fun validateInputPrice(purchase: String) {
         val inputPurchase = purchase.toIntOrNull()
         require(inputPurchase != null) { ErrorMessage.INVALID_AMOUNT_FORMAT }
-        require(inputPurchase >= 1000) { ErrorMessage.INVALID_AMOUNT_RANGE }
-        require(inputPurchase % 1000 == 0) { ErrorMessage.INVALID_AMOUNT_UNIT }
+        require(inputPurchase >= LottoRule.PURCHASE_AMOUNT_UNIT) { ErrorMessage.INVALID_AMOUNT_RANGE }
+        require(inputPurchase % LottoRule.PURCHASE_AMOUNT_UNIT == 0) { ErrorMessage.INVALID_AMOUNT_UNIT }
     }
 
     fun validateInputBonusNumber(number: String, winningNumbers: List<Int>) {
         val bonusNumber = number.toIntOrNull()
+        val numberRange = LottoRule.MIN_WINNING_NUMBER..LottoRule.MAX_WINNING_NUMBER
         require(!winningNumbers.contains(bonusNumber)) { ErrorMessage.INVALID_BONUS_NUMBER_DUPLICATE }
         require(bonusNumber != null) { ErrorMessage.INVALID_BONUS_NUMBER_FORMAT }
-        require(bonusNumber in 1..45) { ErrorMessage.INVALID_BONUS_NUMBER_RANGE }
+        require(bonusNumber in numberRange) { ErrorMessage.INVALID_BONUS_NUMBER_RANGE }
     }
 }
